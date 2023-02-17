@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.Instant;
 import java.util.UUID;
 import lombok.AccessLevel;
@@ -12,6 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Getter
@@ -19,13 +21,18 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name = "item")
 public class Item {
   @Id
-  @GeneratedValue
+  @GeneratedValue(generator = "UUID")
+  @Column
+  @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
   private UUID id;
 
+  @Column
   private String name;
 
+  @Column
   private String description;
 
   @Column(name = "created_at")

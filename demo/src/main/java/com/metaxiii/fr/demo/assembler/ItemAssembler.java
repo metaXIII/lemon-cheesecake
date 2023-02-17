@@ -7,11 +7,12 @@ import com.metaxiii.fr.demo.controller.ItemController;
 import com.metaxiii.fr.demo.entity.Item;
 import com.metaxiii.fr.demo.model.ItemModel;
 import java.util.Date;
-import java.util.List;
 import org.springframework.hateoas.server.reactive.ReactiveRepresentationModelAssembler;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+@Component
 public class ItemAssembler implements ReactiveRepresentationModelAssembler<Item, ItemModel> {
 
   @Override

@@ -2,6 +2,8 @@ package com.metaxiii.fr.demo.repository;
 
 import com.metaxiii.fr.demo.entity.Item;
 import java.util.UUID;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ItemRepository extends ReactiveCrudRepository<Item, UUID> {}
+@Repository
+public interface ItemRepository extends R2dbcRepository<Item, UUID> {}

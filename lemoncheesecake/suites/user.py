@@ -1,5 +1,5 @@
 import lemoncheesecake.api as lcc
-from lemoncheesecake.matching import *
+from lemoncheesecake.matching import check_that, equal_to
 from dotenv import load_dotenv
 import requests
 import os
@@ -21,6 +21,11 @@ def test_welcome():
     response = requests.get(url=base_url)
     check_that("response code", response.status_code, equal_to(200), quiet=False)
 
+@lcc.test("verify items can be load")
+def test_get_items():
+    response = requests.get(url=base_url + "/items")
+    result = response.json()
+    check_that("response code", response.status_code, equal_to(200), quiet=False)
 #
 # @lcc.test("Verify that GET request for /users/1 contains required params")
 # def test_get_users_params():
